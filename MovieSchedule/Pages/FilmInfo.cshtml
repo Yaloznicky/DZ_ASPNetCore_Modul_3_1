@@ -1,0 +1,31 @@
+﻿@page
+@model FilmInfoModel
+@{
+	ViewData["Title"] = "Полная информация о фильме";
+}
+
+<h1 class="fw-bold text-center">@ViewData["Title"]</h1>
+
+<div class="container">
+    <div class="card mt-4 mb-4">
+        <div class="card-header text-primary fs-1 fw-bold">@Model.film.movieTitle</div>
+        <div class="card-body">
+            <h4 class="card-title mb-4">Режисер: @Model.film.director</h4>
+            <h4 class="card-title mb-4">Стиль: @Model.film.style</h4>
+            <h4 class="card-title mb-4">Краткое описание: </h4>
+            <p class="text-start fs-5 mb-4">@Model.film.shortDescription</p>
+            <h4 class="card-title mb-4">Расписание показов</h4>
+            @foreach (var scrinings in Model.film.listOfScreenings)
+            {
+                @foreach (var date in scrinings.date)
+                {
+                    <h5 class="card-title mt-4 mb-4">@date</h5>
+                    @foreach (var time in scrinings.time)
+                    {
+                        <span class="badge bg-secondary fs-6">@time</span>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

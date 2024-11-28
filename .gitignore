@@ -1,0 +1,9 @@
+MovieSchedule/.idea/
+MovieSchedule/.vs/
+MovieSchedule/obj/
+MovieSchedule/bin/
+Film/obj/
+Film/bin/
+ProgectListFilms/obj/
+ProgectListFilms/bin/
+*.sln
