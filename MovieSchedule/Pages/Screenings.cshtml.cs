@@ -11,10 +11,15 @@ namespace MovieSchedule.Pages
     public class ScreeningsModel(IFilmsService list, ILogger<ScreeningsModel> logger) : PageModel
     {
         public List<Film>? films = list.films;
+        public List<Film>? searchFilms = new();
 
         public void OnGet()
         {
         }
-    }
 
+        public void OnPost(string chapter, string query)
+        {
+            searchFilms = list.SearchFilms(chapter, query);
+        }
+    }
 }

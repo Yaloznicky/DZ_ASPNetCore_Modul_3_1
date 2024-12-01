@@ -1,0 +1,36 @@
+﻿@page
+@model ScreeningsModel
+@{
+    ViewData["Title"] = "Результаты поиска";
+}
+
+<h1 class="fw-bold text-center mt-5">@ViewData["Title"]</h1>
+
+<div class="container">
+    @if(Model.searchFilms != null && Model.searchFilms.Count != 0)
+        @foreach (var item in Model.searchFilms)
+        {
+            <div class="card mt-4 mb-4">
+                <a class="card-header nav-link fs-1 fw-bold" asp-area="" asp-page="/FilmInfo" asp-route-id=@item.id>@item.movieTitle</a>
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Расписание показов</h4>
+                    @foreach (var scrinings in item.listOfScreenings)
+                    {
+                        @foreach (var date in scrinings.date)
+                        {
+                            <h5 class="card-title mt-4 mb-4">@date</h5>
+                            @foreach (var time in scrinings.time)
+                            {
+                                <span class="badge bg-secondary fs-6">@time</span>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <h3 class="fw-bold text-center mt-5 text-danger">По вашему запросу ничего не найдено</h3>
+        }
+
+</div>

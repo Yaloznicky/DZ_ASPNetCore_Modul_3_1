@@ -9,9 +9,10 @@ namespace MovieSchedule.Pages
     {
         public Film film = new();
 
-        public void OnGet(int index)
+        public void OnGet(int id)
         {
-            film = list.films[index];
+            film = list.films[id];
         }
+
     }
 }

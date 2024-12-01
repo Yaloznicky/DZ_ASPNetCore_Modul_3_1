@@ -11,5 +11,14 @@ namespace ProgectFilm
         public string[]? date { get; set; }
         public string[]? time { get; set; }
 
+        public string GetDateToString()
+        {
+            string tmp = "";
+            foreach (var item in date)
+            {
+                tmp += item.ToString() + " ";
+            }
+            return tmp;
+        }
     }
 }
