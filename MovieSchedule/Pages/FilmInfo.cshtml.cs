@@ -11,7 +11,12 @@ namespace MovieSchedule.Pages
 
         public void OnGet(int id)
         {
-            film = list.films[id];
+            film = list.films![id];
+        }
+
+        public IActionResult OnGetEdit(int id)
+        {
+            return RedirectToPage("Form", list.films![id]);
         }
 
     }

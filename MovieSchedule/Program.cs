@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using MovieSchedule.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,6 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDataBaseService();
 builder.Services.AddFilmsService();
+
+builder.Services.AddRazorPages(options =>
+{
+    // отключаем глобально Antiforgery-токен
+    options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
+});
 
 var app = builder.Build();
 

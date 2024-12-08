@@ -14,17 +14,16 @@
                 <a class="card-header nav-link fs-1 fw-bold" asp-area="" asp-page="/FilmInfo" asp-route-id=@item.id>@item.movieTitle</a>
                 <div class="card-body">
                     <h4 class="card-title mb-4">Расписание показов</h4>
-                    @foreach (var scrinings in item.listOfScreenings)
+
+                    @foreach (var date in item.listOfScreenings!.date!)
                     {
-                        @foreach (var date in scrinings.date)
+                        <h5 class="card-title mt-4 mb-4">@date</h5>
+                        @foreach (var time in item.listOfScreenings!.time!)
                         {
-                            <h5 class="card-title mt-4 mb-4">@date</h5>
-                            @foreach (var time in scrinings.time)
-                            {
-                                <span class="badge bg-secondary fs-6">@time</span>
-                            }
+                            <span class="badge bg-secondary fs-6">@time</span>
                         }
                     }
+
                 </div>
             </div>
         }

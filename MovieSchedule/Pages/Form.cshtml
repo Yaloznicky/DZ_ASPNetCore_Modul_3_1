@@ -1,0 +1,52 @@
+﻿@page "{handler?}"
+@model FormModel
+@{
+	ViewData["Title"] = "Изменение информации о фильме";
+}
+
+<h1 class="fw-bold text-center mt-5">@ViewData["Title"]</h1>
+
+<form method="post">
+	<div class="card mt-4 mb-4 p-4">
+		<input type="hidden" name="id" value="@Model.film!.id" />
+		<div class="row mb-3">
+			<label class="col-2 col-form-label">Название фильма</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" value="@Model.film!.movieTitle" name="movieTitle"/>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label class="col-2 col-form-label">Режисер</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" value="@Model.film.director" name="director" />
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label class="col-2 col-form-label">Стиль</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" value="@Model.film.style" name="style" />
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label class="col-2 col-form-label">Краткое описание</label>
+			<div class="col-sm-10">
+				<textarea type="text" class="form-control" rows="10" name="shortDescription">@Model.film.shortDescription</textarea>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label class="col-2 col-form-label">Список сеансов</label>
+
+			<div class="col-sm-10">
+				<label>Даты</label>
+				<input type="text" class="form-control mb-2" name="date" value="@Model.film.GetDate()" placeholder="писать в формете '01 января' через запятую" />
+				<label>Время</label>
+				<input type="text" class="form-control mb-2" name="time" value="@Model.film.GetTime()" placeholder="писать в формете '00:00' через запятую" />
+
+			</div>
+			<div class="d-grip gap-2 d-md-flex justify-content-md-end">
+				<button type="submit" class="btn btn-primary">Записать</button>
+				<button type="submit" class="btn btn-secondary" asp-page="/Screenings">Отмена</button>
+			</div>
+		</div>
+	</div>
+</form>

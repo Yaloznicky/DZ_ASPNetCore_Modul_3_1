@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @model FilmInfoModel
 @{
 	ViewData["Title"] = "Полная информация о фильме";
@@ -15,17 +15,23 @@
             <h4 class="card-title mb-4">Краткое описание: </h4>
             <p class="text-start fs-5 mb-4">@Model.film.shortDescription</p>
             <h4 class="card-title mb-4">Расписание показов</h4>
-            @foreach (var scrinings in Model.film.listOfScreenings)
+
+            @foreach (var date in Model.film.listOfScreenings!.date!)
             {
-                @foreach (var date in scrinings.date)
+                <h5 class="card-title mt-4 mb-4">@date</h5>
+                @foreach (var time in Model.film.listOfScreenings!.time!)
                 {
-                    <h5 class="card-title mt-4 mb-4">@date</h5>
-                    @foreach (var time in scrinings.time)
-                    {
-                        <span class="badge bg-secondary fs-6">@time</span>
-                    }
+                    <span class="badge bg-secondary fs-6">@time</span>
                 }
             }
+
         </div>
+        <form method="get" asp-page-handler="Edit">
+            <div class="d-grid gap-2 m-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-outline-success" name="id" value=@Model.film.id>Изменить</button>
+                <button type="button" class="btn btn-outline-danger">Удалить</button>
+            </div>
+        </form>
     </div>
+
 </div>
