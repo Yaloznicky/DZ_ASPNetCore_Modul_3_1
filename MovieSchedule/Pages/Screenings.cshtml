@@ -1,7 +1,7 @@
 ﻿@page "{handler?}"
 @model ScreeningsModel
 @{
-    ViewData["Title"] = "Рассписание показа фильмов";
+    ViewData["Title"] = Title.Screenings;
 }
 
 <form method="post">
@@ -21,7 +21,11 @@
 </form>
 
 
-<h1 class="fw-bold text-center mt-5">@ViewData["Title"]</h1>
+<h1 class="fw-bold text-center m-5">@ViewData["Title"]</h1>
+
+<form method="get" asp-page="/Form" asp-page-handler="NewFilm">
+    <button type="submit" class="btn btn-primary btn-lg mb-3" >Добавить новый фильм</button>
+</form>
 
 <div class="container">
     @foreach (var item in Model.films!)

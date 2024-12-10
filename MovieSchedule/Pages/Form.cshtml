@@ -1,7 +1,6 @@
 ﻿@page "{handler?}"
 @model FormModel
 @{
-	ViewData["Title"] = "Изменение информации о фильме";
 }
 
 <h1 class="fw-bold text-center mt-5">@ViewData["Title"]</h1>
@@ -44,7 +43,7 @@
 
 			</div>
 			<div class="d-grip gap-2 d-md-flex justify-content-md-end">
-				<button type="submit" class="btn btn-primary">Записать</button>
+				<button type="submit" class="btn btn-primary" name="key" value="@ViewData["Title"]">Записать</button>
 				<button type="submit" class="btn btn-secondary" asp-page="/Screenings">Отмена</button>
 			</div>
 		</div>

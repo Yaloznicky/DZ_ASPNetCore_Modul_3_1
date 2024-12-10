@@ -4,10 +4,11 @@ namespace MovieSchedule.Services
 {
     public interface IFilmsService
     {
-        //public List<Film>? films { set; get; }
         public List<Film>? films { get; }
         public List<Film>? SearchFilms(string chapter, string query);
-        public void EditFilm(Film film); 
+        public void EditFilm(Film film);
+        public void NewFilm(Film film);
+        public void DeleteFilm(string id);
     }
 
     public class FilmsService(IDbService db) : IFilmsService
@@ -15,7 +16,18 @@ namespace MovieSchedule.Services
         List<Film>? IFilmsService.films 
         { 
             get => db.GetFilmList();
-            //set => db.SetFilmList(value!);
+        }
+
+        public void NewFilm(Film film)
+        {
+            List<Film> films = db.GetFilmList()!;
+            films.Add(film);
+            db.SetFilmList(films);
+        }
+
+        public void DeleteFilm(string id)
+        {
+            throw new NotImplementedException();
         }
 
         public void EditFilm(Film film)
@@ -36,7 +48,6 @@ namespace MovieSchedule.Services
                 films[index] = film;
                 db.SetFilmList(films);
             }
-
         }
 
         public List<Film>? SearchFilms(string chapter, string query)

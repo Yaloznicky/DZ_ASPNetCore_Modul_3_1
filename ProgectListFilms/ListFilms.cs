@@ -1,4 +1,6 @@
-﻿using System.Text.Encodings.Web;
+﻿using System.IO;
+using System.Text;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using ProgectFilm;
 
@@ -33,7 +35,7 @@ namespace ProgectListFilms
             };
 
             // сохранение данных в базу
-            using (FileStream fs = new FileStream(connectionString, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(connectionString, FileMode.Create))
             {
                 JsonSerializer.Serialize<List<Film>>(fs, filmList, options);
             }

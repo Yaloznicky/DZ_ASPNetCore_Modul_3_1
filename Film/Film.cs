@@ -23,12 +23,16 @@
 
         public string GetDate()
         {
-            return listOfScreenings!.GetDateToString(); 
+            if (this.listOfScreenings != null)
+                return listOfScreenings!.GetDateToString(); 
+            return string.Empty;
         }
 
         public string GetTime()
         {
-            return listOfScreenings!.GetTimeToString();
+            if(this.listOfScreenings != null)
+                return listOfScreenings!.GetTimeToString();
+            return string.Empty;
         }
     }
 }

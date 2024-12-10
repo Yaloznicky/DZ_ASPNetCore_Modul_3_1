@@ -17,4 +17,13 @@ namespace MovieSchedule.Pages
 
         }
     }
+
+    public static class Title
+    {
+        public const string New = "Новый фильм";
+        public const string Edit = "Изменение информации о фильме";
+        public const string Delete = "Удаление фильма";
+        public const string Screenings = "Рассписание показа фильмов";
+        public const string FilmInfo = "Полная информация о фильме";
+    }
 }
