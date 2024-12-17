@@ -11,13 +11,20 @@ namespace MovieSchedule.Pages
 
         public void OnGet(int id)
         {
-            film = list.films![id];
+            int index = list.SearchIndex(id.ToString(), list.films!);
+            film = list.films![index];
         }
 
         public IActionResult OnGetEdit(int id)
         {
-            return RedirectToPage("Form", list.films![id]);
+            int index = list.SearchIndex(id.ToString(), list.films!);
+            return RedirectToPage("Form", list.films![index]);
         }
 
+        public IActionResult OnGetDelete(int id)
+        {
+            list.DeleteFilm(id.ToString());
+            return RedirectToPage("Screenings");
+        }
     }
 }

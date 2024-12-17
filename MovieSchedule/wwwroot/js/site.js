@@ -1,4 +1,8 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function clickHandler(data) {
 
-// Write your JavaScript code.
+    var id = data.getAttribute("data-id");
+    var title = data.getAttribute("data-title");
+
+    $("#title").text(title);
+    $('#staticBackdrop').find('button.btn-danger').val(id);
+}

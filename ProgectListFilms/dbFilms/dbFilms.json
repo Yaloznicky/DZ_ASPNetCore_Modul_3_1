@@ -58,62 +58,28 @@
     }
   },
   {
-    "id": "3",
-    "movieTitle": "aaaaaaaaaaa",
-    "director": "ssssssssss",
-    "style": "ужасы",
-    "shortDescription": "ужасы",
-    "listOfScreenings": {
-      "date": [
-        "11 сентября",
-        "12сентября"
-      ],
-      "time": [
-        "15:00",
-        "20:15"
-      ]
-    }
-  },
-  {
-    "id": "4",
-    "movieTitle": "новый",
-    "director": "новый",
-    "style": "новый",
-    "shortDescription": "новый",
-    "listOfScreenings": {
-      "date": [
-        "01 января",
-        "02февраля"
-      ],
-      "time": [
-        "20:00",
-        "15:00"
-      ]
-    }
-  },
-  {
-    "id": "5",
-    "movieTitle": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "director": "",
-    "style": "",
-    "shortDescription": "",
+    "id": "6",
+    "movieTitle": "test222222",
+    "director": "test",
+    "style": "test",
+    "shortDescription": "test",
     "listOfScreenings": {
       "date": [],
       "time": []
     }
   },
   {
-    "id": "6",
-    "movieTitle": "bbb",
-    "director": "bbb",
-    "style": "bbb",
-    "shortDescription": "bbb",
+    "id": "10",
+    "movieTitle": "test",
+    "director": "test",
+    "style": "test",
+    "shortDescription": "test",
     "listOfScreenings": {
       "date": [
-        "дата"
+        "test"
       ],
       "time": [
-        "время"
+        "test"
       ]
     }
   }

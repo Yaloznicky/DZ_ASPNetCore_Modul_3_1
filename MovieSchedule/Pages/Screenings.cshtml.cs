@@ -18,8 +18,16 @@ namespace MovieSchedule.Pages
 
         public IActionResult OnGetEdit(int id)
         {
-            return RedirectToPage("Form", list.films![id]);
+            int index = list.SearchIndex(id.ToString(), films!);
+            return RedirectToPage("Form", list.films![index]);
         }
+
+        public IActionResult OnGetDelete(int id)
+        {
+            list.DeleteFilm(id.ToString());
+            return RedirectToPage();
+        }
+
 
         public void OnPost(string chapter, string query)
         {

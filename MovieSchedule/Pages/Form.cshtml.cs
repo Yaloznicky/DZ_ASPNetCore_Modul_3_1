@@ -19,10 +19,10 @@ namespace MovieSchedule.Pages
             return Page();
         }
 
-        public void OnGet(int id)
+        public void OnGet(Film film)
         {
             ViewData["Title"] = Title.Edit;
-            film = list.films![id];
+            this.film = film;
         }
 
         public RedirectToPageResult OnPost(string key)

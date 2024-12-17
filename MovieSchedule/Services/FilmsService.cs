@@ -1,4 +1,5 @@
-﻿using ProgectFilm;
+﻿using System;
+using ProgectFilm;
 
 namespace MovieSchedule.Services
 {
@@ -9,6 +10,7 @@ namespace MovieSchedule.Services
         public void EditFilm(Film film);
         public void NewFilm(Film film);
         public void DeleteFilm(string id);
+        public int SearchIndex(string id, List<Film> films);
     }
 
     public class FilmsService(IDbService db) : IFilmsService
@@ -27,21 +29,20 @@ namespace MovieSchedule.Services
 
         public void DeleteFilm(string id)
         {
-            throw new NotImplementedException();
+            List<Film> films = db.GetFilmList()!;
+            int index = SearchIndex(id, films);
+
+            if (index != -1)
+            {
+                films.RemoveAt(index);
+                db.SetFilmList(films);
+            }
         }
 
         public void EditFilm(Film film)
         {
             List<Film> films = db.GetFilmList()!;
-            int index = -1;
-            for (int i=0; i<films!.Count; i++)
-            {
-                if (films[i].id == film.id)
-                {
-                    index = i; 
-                    break;
-                }
-            }
+            int index = SearchIndex(film.id!, films);
 
             if (index != -1)
             {
@@ -71,6 +72,20 @@ namespace MovieSchedule.Services
             else 
                 return null;
         }
+
+        public int SearchIndex(string id, List<Film> films)
+        {
+            int index = -1;
+            for (int i = 0; i < films!.Count; i++)
+            {
+                if (films[i].id == id)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return index;
+        }
     }
 
 
@@ -81,5 +96,4 @@ namespace MovieSchedule.Services
             services.AddScoped<IFilmsService, FilmsService>();
         }
     }
-
 }

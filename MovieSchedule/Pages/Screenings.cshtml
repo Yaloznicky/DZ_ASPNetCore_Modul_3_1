@@ -2,6 +2,8 @@
 @model ScreeningsModel
 @{
     ViewData["Title"] = Title.Screenings;
+    int index = 2;
+    //ProgectFilm.Film film = new(); 
 }
 
 <form method="post">
@@ -45,12 +47,35 @@
                 }
 
             </div>
-            <form method="get" asp-page-handler="Edit">
-                <div class="d-grid gap-2 m-2 d-md-flex justify-content-md-end">
+            <div class="d-grid gap-2 m-2 d-md-flex justify-content-md-end">
+                <form method="get" asp-page-handler="Edit">
                     <button type="submit" class="btn btn-outline-success" name="id" value=@item.id>Изменить</button>
-                    <button type="button" class="btn btn-outline-danger">Удалить</button>
-                </div>
-            </form>
+                </form>
+                <button onclick="clickHandler(this);"  id="deleteButton"  data-id="@item.id" data-title="@item.movieTitle" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Удалить</button>
+            </div>
         </div>
     }
 </div>
+
+<!-- Модальное окно -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-danger" id="staticBackdropLabel">Удаление фильма!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-title fs-5">Вы действительно хотите удалить фильм </h2>
+                <h1 id="title" class="modal-title fs-5"></h1>
+            </div>
+            <div class="modal-footer">
+                <form method="get" asp-page-handler="Delete">
+                    <button type="submit" class="btn btn-danger" name="id" value="">Удалить</button>
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Модальное окно -->
